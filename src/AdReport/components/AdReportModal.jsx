@@ -6,11 +6,13 @@ import {
   AD_REPORT_OPTIONS,
 } from "@/AdReport/constants/adReportOptions";
 import useSubmitAdReport from "@/AdReport/hooks/useSubmitAdReport";
+import useChannelSwitch from "@/Channel/hooks/useChannelSwitch";
 import Button from "@/shared/components/ui/Button";
 import Modal from "@/shared/components/ui/Modal";
 import useUserId from "@/User/hooks/useUserId";
 
 const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
+  const handleChannelSwitch = useChannelSwitch();
   const [selectedParentOption, setSelectedParentOption] = useState(null);
   const [selectedChildOption, setSelectedChildOption] = useState(null);
   const userAdPhrase = useRef("");
@@ -43,6 +45,20 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
     });
 
     onClose();
+
+    if (
+      selectedChildOption === "ad-stay-current" ||
+      selectedChildOption === "not-ad-stay-current"
+    ) {
+      return;
+    }
+
+    if (
+      selectedChildOption === "move-other" ||
+      selectedChildOption === "move-previous"
+    ) {
+      handleChannelSwitch(isAd);
+    }
   };
 
   return (
