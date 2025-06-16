@@ -2,8 +2,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider } from "react-router-dom";
 
-import useAdKeywordsSocketListener from "@/hooks/useAdKeywordsSocketListener";
-import router from "@/routes";
+import router from "@/Router";
+import useAdKeywordsSocketListener from "@/shared/hooks/useAdKeywordsSocketListener";
 
 const queryClient = new QueryClient();
 
