@@ -44,16 +44,27 @@ const ChannelPlayer = () => {
         <div className="mt-2 flex items-center gap-x-2">
           <p className="text-sm font-semibold sm:text-base">{buttonLabel}</p>
           <ToggleButton
+            data-testid="toggle-button"
             size="s"
             checked={settings[settingType]}
             onToggle={handleToggle}
           />
         </div>
-        <Button className="mt-12" onClick={handlePlayPause}>
+        <Button
+          data-testid="play-pause-button"
+          className="mt-12"
+          onClick={handlePlayPause}
+        >
           {isPlaying ? (
-            <MainPauseIcon className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]" />
+            <MainPauseIcon
+              data-testid="pause-icon"
+              className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]"
+            />
           ) : (
-            <MainPlayIcon className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]" />
+            <MainPlayIcon
+              data-testid="play-icon"
+              className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]"
+            />
           )}
         </Button>
       </div>

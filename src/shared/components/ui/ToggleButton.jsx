@@ -13,11 +13,18 @@ const toggleSize = {
   },
 };
 
-const ToggleButton = ({ size = "m", checked, onToggle, disabled = false }) => {
+const ToggleButton = ({
+  size = "m",
+  checked,
+  onToggle,
+  disabled = false,
+  "data-testid": testId,
+}) => {
   const { buttonSize, thumbSize, activeTranslate } = toggleSize[size];
 
   return (
     <Button
+      data-testid={testId}
       disabled={disabled}
       className={`relative cursor-pointer rounded-full transition-colors duration-200 ${
         disabled
