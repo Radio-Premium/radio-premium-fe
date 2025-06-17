@@ -52,7 +52,7 @@ const Settings = () => {
         </ul>
       </div>
       {isAdDetect && (
-        <div className="px-4 pt-2">
+        <div data-testid="no-ad-channel-list" className="px-4 pt-2">
           <ChannelSection
             title={SETTING_TITLES[SETTING_TYPES.AD_REDIRECT_CHANNEL]}
             subTitleList={
