@@ -34,7 +34,6 @@ export class ErrorBoundary extends React.Component {
     const { fallback: Fallback, children } = this.props;
 
     if (this.state.hasError) {
-      console.log("ErrorBoundary에서 에러를 감지했습니다.");
       return <Fallback resetError={this.resetError} />;
     }
 
