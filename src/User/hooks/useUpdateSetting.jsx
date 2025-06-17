@@ -25,7 +25,7 @@ const useUpdateSetting = (type) => {
     }
 
     try {
-      await axios.put(
+      await axios.patch(
         `${BACKEND_API_URL}/users/${userId}/settings`,
         updatedSettings
       );
