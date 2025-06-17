@@ -14,7 +14,6 @@ export class ErrorBoundary extends React.Component {
 
   captureReject(e) {
     e.preventDefault();
-    console.log("dd");
     this.setState({ hasError: true });
   }
 
