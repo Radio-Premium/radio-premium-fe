@@ -22,7 +22,7 @@ const AdRedirectChannelItem = ({
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
       {isSelected && (
-        <Button>
+        <Button data-testid="selected-no-ad-channel">
           <SelectIcon className="ml-3" />
         </Button>
       )}
