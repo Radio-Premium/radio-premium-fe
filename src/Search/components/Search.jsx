@@ -49,13 +49,13 @@ const Search = () => {
 
       {isEmptyInput && (
         <p className="mt-10 text-center text-sm text-gray-400">
-          {SEARCH_MESSAGES.NO_INPUT}
+          {SEARCH_MESSAGES.EMPTY_INPUT}
         </p>
       )}
 
       {isEmptyResult && (
         <p className="mt-10 text-center text-sm text-gray-400">
-          {SEARCH_MESSAGES.NO_RESULT}
+          {SEARCH_MESSAGES.EMPTY_RESULT}
         </p>
       )}
     </div>
