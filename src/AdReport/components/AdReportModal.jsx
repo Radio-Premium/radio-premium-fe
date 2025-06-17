@@ -5,6 +5,7 @@ import {
   AD_REPORT_TYPES,
   AD_REPORT_OPTIONS,
 } from "@/AdReport/constants/adReportOptions";
+import { AD_REPORT_MESSAGES } from "@/AdReport/constants/messages";
 import useSubmitAdReport from "@/AdReport/hooks/useSubmitAdReport";
 import useChannelSwitch from "@/Channel/hooks/useChannelSwitch";
 import Button from "@/shared/components/ui/Button";
@@ -63,8 +64,8 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
 
   return (
     <Modal
-      title="현재 방송이 광고인지 선택해주세요."
-      subTitle="광고일 경우, 채널을 변경할 수 있습니다."
+      title={AD_REPORT_MESSAGES.MODAL_TITLE}
+      subTitle={AD_REPORT_MESSAGES.MODAL_SUBTITLE}
     >
       <div className="absolute inset-0 flex flex-col justify-between px-1">
         <div className="max-h-[160px] overflow-hidden">
@@ -87,12 +88,12 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
             htmlFor="adPhraseInput"
             className="mb-2 block text-left text-sm text-gray-600"
           >
-            📌 광고로 판단되는 멘트를 입력해주세요 (선택)
+            {AD_REPORT_MESSAGES.INPUT_LABEL}
           </label>
           <input
             id="adPhraseInput"
             type="text"
-            placeholder="EX) '하핑하핑'"
+            placeholder={AD_REPORT_MESSAGES.INPUT_PLACEHOLDER}
             defaultValue=""
             onChange={(e) => (userAdPhrase.current = e.target.value)}
             className="mb-4 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -102,14 +103,14 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
               className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100"
               onClick={onClose}
             >
-              취소
+              {AD_REPORT_MESSAGES.BUTTON_CANCEL}
             </Button>
             <Button
               className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
               onClick={handleSubmit}
               disabled={!selectedParentOption || !selectedChildOption}
             >
-              확인
+              {AD_REPORT_MESSAGES.BUTTON_CONFIRM}
             </Button>
           </div>
         </div>

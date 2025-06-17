@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
 import SearchResultListItem from "@/Search/components/SearchResultListItem";
+import { SEARCH_MESSAGES } from "@/Search/constants/messages";
 import { useSearchStore } from "@/Search/stores/useSearchStore";
 
 const Search = () => {
@@ -48,13 +49,13 @@ const Search = () => {
 
       {isEmptyInput && (
         <p className="mt-10 text-center text-sm text-gray-400">
-          원하는 키워드(예시: SBS, 라디오, FM)를 입력해주세요.
+          {SEARCH_MESSAGES.NO_INPUT}
         </p>
       )}
 
       {isEmptyResult && (
         <p className="mt-10 text-center text-sm text-gray-400">
-          검색 결과가 없습니다.
+          {SEARCH_MESSAGES.NO_RESULT}
         </p>
       )}
     </div>

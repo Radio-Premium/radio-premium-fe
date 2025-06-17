@@ -1,16 +1,19 @@
 import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { PLAYBACK_MODE } from "@/Playback/constants/messages";
 import useChannelPlayback from "@/Playback/hooks/useChannelPlayback";
 import Button from "@/shared/components/ui/Button";
 import ToggleButton from "@/shared/components/ui/ToggleButton";
+import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 import { SETTING_TITLES, SETTING_TYPES } from "@/User/constants/settingOptions";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
 import { useUserStore } from "@/User/stores/useUserStore";
 
 const ChannelPlayer = () => {
-  const { selectedChannel, isPlaying, handlePlayPause } =
-    useChannelPlayback("full");
+  const { selectedChannel, isPlaying, handlePlayPause } = useChannelPlayback(
+    PLAYBACK_MODE.FULL
+  );
   const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
   const { settings } = useUserStore();
 
@@ -33,7 +36,7 @@ const ChannelPlayer = () => {
         <img
           className="aspect-[268/257] w-[70%] max-w-[268px] rounded-md object-cover"
           src={logoUrl}
-          alt="채널 로고"
+          alt={CHANNEL_MESSAGES.ALT_THUMBNAIL(name)}
         />
         <p className="mt-3.5 text-center text-lg font-bold sm:text-xl">
           {name}

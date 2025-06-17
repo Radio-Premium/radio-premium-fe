@@ -5,6 +5,7 @@ import AdReportModal from "@/AdReport/components/AdReportModal";
 import AdReportIcon from "@/assets/svgs/icon-ad-report.svg?react";
 import BackArrow from "@/assets/svgs/icon-back-arrow.svg?react";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { REPORT_HEADER_MESSAGES } from "@/shared/constants/headerMessages";
 
 const ReportHeader = () => {
   const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
@@ -27,7 +28,7 @@ const ReportHeader = () => {
         onClick={openModal}
       >
         <AdReportIcon />
-        광고 제보하기
+        {REPORT_HEADER_MESSAGES.REPORT_BUTTON}
       </button>
       {isAdReportModalOpen && (
         <AdReportModal

@@ -6,11 +6,12 @@ import Search from "@/Search/components/Search";
 import ErrorBoundaryWrapper from "@/shared/components/ErrorBoundaryWrapper";
 import MainLayout from "@/shared/components/MainLayout";
 import NotFound from "@/shared/components/NotFound";
+import { ROUTES, RELATIVE_ROUTES } from "@/shared/constants/routePaths";
 import Settings from "@/User/components/Settings";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROUTES.ROOT,
     element: (
       <ErrorBoundaryWrapper>
         <MainLayout />
@@ -18,9 +19,9 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "", element: <Home /> },
-      { path: "search-result", element: <Search /> },
-      { path: "channel-player", element: <ChannelPlayer /> },
-      { path: "settings", element: <Settings /> },
+      { path: RELATIVE_ROUTES.SEARCH_RESULT, element: <Search /> },
+      { path: RELATIVE_ROUTES.CHANNEL_PLAYER, element: <ChannelPlayer /> },
+      { path: RELATIVE_ROUTES.SETTINGS, element: <Settings /> },
     ],
   },
   { path: "*", element: <NotFound /> },

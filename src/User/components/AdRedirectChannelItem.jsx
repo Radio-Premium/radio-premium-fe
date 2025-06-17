@@ -1,5 +1,6 @@
 import SelectIcon from "@/assets/svgs/icon-select.svg?react";
 import Button from "@/shared/components/ui/Button";
+import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 
 const AdRedirectChannelItem = ({
   channelId,
@@ -18,7 +19,7 @@ const AdRedirectChannelItem = ({
       <img
         className="h-12 w-12 rounded-[50%]"
         src={thumbnail}
-        alt={`${channelName} 썸네일`}
+        alt={CHANNEL_MESSAGES.ALT_THUMBNAIL(channelName)}
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
       {isSelected && (

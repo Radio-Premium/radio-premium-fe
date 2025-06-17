@@ -6,6 +6,7 @@ import DragDropIcon from "@/assets/svgs/icon-drag-drop.svg?react";
 import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
 import useChannelNavigation from "@/Channel/hooks/useChannelNavigation";
 import useToggleFavorite from "@/Channel/hooks/useToggleFavorite";
+import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 
 const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
   const {
@@ -51,7 +52,7 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
       <img
         className="h-12 w-12"
         src={thumbnail}
-        alt={`${channelName} 썸네일`}
+        alt={CHANNEL_MESSAGES.ALT_THUMBNAIL(channelName)}
       />
       <p className="ml-3 w-3/5 flex-1 truncate overflow-hidden text-sm font-bold whitespace-nowrap">
         {channelName}

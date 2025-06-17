@@ -5,6 +5,7 @@ import BackArrow from "@/assets/svgs/icon-back-arrow.svg?react";
 import SearchThinIcon from "@/assets/svgs/icon-search-thin.svg?react";
 import { useSearchStore } from "@/Search/stores/useSearchStore";
 import Button from "@/shared/components/ui/Button";
+import { SEARCH_HEADER_MESSAGES } from "@/shared/constants/headerMessages";
 
 const RadioSearchInput = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const RadioSearchInput = () => {
             onBlur={() => setIsInputClicked(false)}
             onChange={(e) => setKeyword(e.target.value)}
             type="text"
-            placeholder={!isInputClicked && "채널 이름을 입력해 주세요"}
+            placeholder={!isInputClicked && SEARCH_HEADER_MESSAGES.PLACEHOLDER}
             className="w-full text-sm font-semibold text-neutral-800 outline-none"
           />
         </div>

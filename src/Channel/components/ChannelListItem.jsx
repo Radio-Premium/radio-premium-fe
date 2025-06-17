@@ -3,6 +3,7 @@ import { useRef } from "react";
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
 import useChannelNavigation from "@/Channel/hooks/useChannelNavigation";
 import useToggleFavorite from "@/Channel/hooks/useToggleFavorite";
+import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 
 const ChannelListItem = ({
   thumbnail,
@@ -36,7 +37,7 @@ const ChannelListItem = ({
       <img
         className="h-12 w-12"
         src={thumbnail}
-        alt={`${channelName} 썸네일`}
+        alt={CHANNEL_MESSAGES.ALT_THUMBNAIL(channelName)}
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
       <button

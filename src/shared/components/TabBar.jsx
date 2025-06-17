@@ -1,12 +1,15 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
+import { ROUTES } from "@/shared/constants/routePaths";
+import { TAB_BAR_LABELS } from "@/shared/constants/tabBarLabels";
+
 const TabBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const tabItems = [
-    { label: "홈", path: "/" },
-    { label: "설정", path: "/settings" },
+    { label: TAB_BAR_LABELS.HOME, path: ROUTES.ROOT },
+    { label: TAB_BAR_LABELS.SETTINGS, path: ROUTES.SETTINGS },
   ];
 
   return (

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { PLAYBACK_MODE } from "@/Playback/constants/messages";
 import { useMiniPlayerStore } from "@/Playback/stores/useMiniPlayerStore";
 import { usePlayingStore } from "@/Playback/stores/usePlayingStore";
 import { controlStreamingPlayback } from "@/Playback/utils/playControl";
@@ -19,7 +20,7 @@ const useChannelPlayback = (mode) => {
 
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
-  const isMiniMode = mode === "mini";
+  const isMiniMode = mode === PLAYBACK_MODE.MINI;
   const targetChannelId = isMiniMode ? playingChannelId : selectedChannelId;
 
   const selectedChannel = radioChannelList.find(
