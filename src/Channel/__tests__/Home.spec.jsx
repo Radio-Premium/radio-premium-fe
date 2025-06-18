@@ -96,7 +96,6 @@ describe("Home 컴포넌트 통합 테스트", async () => {
       mockFavoriteChannels,
       [],
     ]);
-
     mockToggleFavorite.mockResolvedValue(false);
 
     render(
