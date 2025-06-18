@@ -10,11 +10,11 @@ export const useUserSettingsStore = create(
         adRedirectChannelId: null,
       },
 
-      setUserSettings: (updatedSettings) =>
+      setSettings: (settings) =>
         set((state) => ({
           settings: {
             ...state.settings,
-            ...updatedSettings,
+            ...settings,
           },
         })),
     }),

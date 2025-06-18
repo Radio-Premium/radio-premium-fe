@@ -3,7 +3,7 @@ import { updateUserSettings } from "@/User/services/userSettings";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useUpdateSetting = (type) => {
-  const { settings, setUserSettings } = useUserSettingsStore();
+  const { settings, setSettings } = useUserSettingsStore();
 
   const updateSetting = async (value) => {
     const userId = localStorage.getItem("userId");
@@ -24,7 +24,7 @@ const useUpdateSetting = (type) => {
 
     try {
       await updateUserSettings(userId, updatedSettings);
-      setUserSettings(updatedSettings);
+      setSettings(updatedSettings);
     } catch (error) {
       console.error("setting change failed", error);
     }
