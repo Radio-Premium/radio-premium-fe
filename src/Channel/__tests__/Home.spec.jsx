@@ -35,6 +35,13 @@ const mockNavigate = vi.fn();
 const mockToggleFavorite = vi.fn();
 
 describe("Home 컴포넌트 통합 테스트", async () => {
+  const renderHome = () =>
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    );
+
   beforeEach(() => {
     vi.clearAllMocks();
     axios.get = vi.fn();
@@ -48,11 +55,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     ];
     vi.mocked(useCategorizeChannels).mockReturnValue([[], mockChannelData]);
 
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
+    renderHome();
 
     const radioChannel = screen.getByText("KBS Radio");
     fireEvent.click(radioChannel);
@@ -72,11 +75,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     ]);
     mockToggleFavorite.mockResolvedValue(true);
 
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
+    renderHome();
 
     const favoriteButton = screen.getByTestId(
       "register-favorite-channel-button"
@@ -98,11 +97,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     ]);
     mockToggleFavorite.mockResolvedValue(false);
 
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
+    renderHome();
 
     const favoriteButton = screen.getByTestId("cancel-favorite-channel-button");
     fireEvent.click(favoriteButton);
@@ -119,11 +114,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     vi.mocked(axios.get).mockResolvedValue({ data: mockChannelData });
     vi.mocked(useCategorizeChannels).mockReturnValue([[], mockChannelData]);
 
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
+    renderHome();
 
     await waitFor(() => {
       expect(screen.getByText("Test Radio")).toBeInTheDocument();
