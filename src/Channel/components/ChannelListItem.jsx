@@ -40,6 +40,7 @@ const ChannelListItem = ({
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
       <button
+        data-testid="register-favorite-channel-button"
         onClick={handleRegisterFavoriteChannel}
         disabled={isProcessing.current}
       >
