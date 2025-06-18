@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 import { getUserInfo } from "@/User/services/users";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
@@ -12,13 +13,11 @@ const useUserProfile = (userId) => {
     }
 
     const initUserProfile = async () => {
-      try {
+      await handleAsyncError(async () => {
         const data = await getUserInfo(userId);
         const { isAdDetect, isReturnChannel, adRedirectChannelId } = data;
         setUserSettings({ isAdDetect, isReturnChannel, adRedirectChannelId });
-      } catch (error) {
-        console.error("fetch user profile failed: ", error);
-      }
+      }, "Failed to fetch user profile:");
     };
     initUserProfile();
   }, [userId, setUserSettings]);

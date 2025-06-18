@@ -1,3 +1,4 @@
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 import { SETTING_TYPES } from "@/User/constants/settingOptions";
 import { updateUserSettings } from "@/User/services/userSettings";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
@@ -22,12 +23,10 @@ const useUpdateSetting = (type) => {
       updatedSettings[SETTING_TYPES.RETURN_CHANNEL] = false;
     }
 
-    try {
+    await handleAsyncError(async () => {
       await updateUserSettings(userId, updatedSettings);
       setUserSettings(updatedSettings);
-    } catch (error) {
-      console.error("setting change failed", error);
-    }
+    }, "Failed to update user setting:");
   };
 
   return updateSetting;

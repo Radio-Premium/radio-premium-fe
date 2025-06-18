@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import { getRadioChannels } from "@/Channel/services/radioChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 
 const useChannels = () => {
   const { radioChannelList, setRadioChannelList } = useChannelStore();
@@ -11,13 +12,11 @@ const useChannels = () => {
       return;
     }
 
-    const initChannels = async () => {
-      try {
+    const initChannels = () => {
+      handleAsyncError(async () => {
         const data = await getRadioChannels();
         setRadioChannelList(data);
-      } catch (error) {
-        console.error("fetch radioChannels failed: ", error);
-      }
+      }, "Failed to fetch radio channels:");
     };
     initChannels();
   }, [radioChannelList, setRadioChannelList]);

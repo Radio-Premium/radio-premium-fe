@@ -4,6 +4,7 @@ import { getRandomNoAdChannel } from "@/Channel/services/radioChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
 import useControlStreamingSwitch from "@/Playback/hooks/useControlStreamingSwitch";
 import { useVideoElementStore } from "@/shared/stores/useVideoElementStore";
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useChannelSwitch = () => {
@@ -21,10 +22,11 @@ const useChannelSwitch = () => {
 
   const handleChannelSwitch = useCallback(
     async (isAd) => {
-      try {
+      await handleAsyncError(async () => {
         let channelId = 0;
+
         if (isAd) {
-          try {
+          await handleAsyncError(async () => {
             if (adRedirectChannelId === null) {
               const { data } = await getRandomNoAdChannel();
               channelId = data.id;
@@ -34,9 +36,7 @@ const useChannelSwitch = () => {
 
             setIsChannelChanged(true);
             setPrevChannelId(selectedChannelId);
-          } catch (error) {
-            console.error("fetch randomNoAdchannel failed", error);
-          }
+          }, "Failed to fetch random no-ad channel:");
         } else {
           if (prevChannelId === null || prevChannelId === undefined) {
             return;
@@ -48,9 +48,7 @@ const useChannelSwitch = () => {
         }
 
         await controlStreamingSwitch(videoElement, channelId);
-      } catch (error) {
-        console.error("switch failed: ", error);
-      }
+      }, "Failed to switch channel:");
     },
     [
       prevChannelId,

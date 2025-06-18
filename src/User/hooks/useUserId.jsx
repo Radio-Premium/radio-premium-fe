@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 import { createUser } from "@/User/services/users";
 
 const useUserId = () => {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const fetchUserId = async () => {
+    const fetchUserId = () => {
       const storedId = localStorage.getItem("userId");
 
       if (storedId === null) {
-        try {
+        return handleAsyncError(async () => {
           const userId = await createUser();
           localStorage.setItem("userId", userId);
-        } catch (error) {
-          console.error("fetch userId failed: ", error);
-        }
+        }, "Failed to create user:");
       } else {
         setUserId(storedId);
       }

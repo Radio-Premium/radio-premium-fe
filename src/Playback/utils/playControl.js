@@ -3,6 +3,7 @@ import Hls from "hls.js";
 import { getChannelInfo } from "@/Channel/services/radioChannels";
 import { postWhisper } from "@/Playback/services/whisper";
 import { stopWhisperServer } from "@/Playback/utils/stopWhisperServer";
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 
 const userId = localStorage.getItem("userId");
 let hlsInstance = null;
@@ -33,16 +34,19 @@ export const controlStreamingPlayback = async (
   isAdDetect
 ) => {
   if (!isPlaying) {
-    try {
+    await handleAsyncError(async () => {
       const { data } = await getChannelInfo(channelId, userId);
       const streamingUrl = data.url;
+
       if (isAdDetect) {
-        await postWhisper({ streamingUrl, userId, channelId });
+        await handleAsyncError(
+          () => postWhisper({ streamingUrl, userId, channelId }),
+          "Failed to start ad detection:"
+        );
       }
+
       startStreamingPlay(video, streamingUrl);
-    } catch (error) {
-      console.error("fetch channelInfo failed", error);
-    }
+    }, "Failed to fetch channel info:");
   } else {
     video.pause();
     stopWhisperServer(userId);

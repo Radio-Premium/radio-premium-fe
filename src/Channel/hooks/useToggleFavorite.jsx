@@ -3,6 +3,7 @@ import {
   deleteInterestChannel,
 } from "@/Channel/services/interestChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 import useUserId from "@/User/hooks/useUserId";
 
 const useToggleFavorite = () => {
@@ -16,18 +17,18 @@ const useToggleFavorite = () => {
 
     const isFavorite = interestChannelIds.includes(channelId);
 
-    try {
-      if (isFavorite) {
+    if (isFavorite) {
+      await handleAsyncError(async () => {
         await deleteInterestChannel(userId, channelId);
         setInterestChannelIds(
           interestChannelIds.filter((id) => id !== channelId)
         );
-      } else {
+      }, "Failed to delete interest channel:");
+    } else {
+      await handleAsyncError(async () => {
         await createInterestChannel(userId, channelId);
         setInterestChannelIds([...interestChannelIds, channelId]);
-      }
-    } catch (error) {
-      console.error("fetch toggleFavorite failed: ", error);
+      }, "Failed to create interest channel:");
     }
   };
 

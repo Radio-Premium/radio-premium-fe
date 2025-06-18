@@ -7,7 +7,7 @@ export const getRadioChannels = async () => {
 };
 
 export const getChannelInfo = async (channelId, userId) => {
-  await axiosInstance.get(`/radio-channels/${channelId}`, {
+  return await axiosInstance.get(`/radio-channels/${channelId}`, {
     params: { userId },
   });
 };

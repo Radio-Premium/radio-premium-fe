@@ -1,17 +1,12 @@
 import { createAdReport } from "@/AdReport/services/reports";
+import { handleAsyncError } from "@/shared/utils/handleAsyncError";
 
 const useSubmitAdReport = () => {
   const reportAd = async ({ userId, isAd, detectedAdPhrase, channelId }) => {
-    try {
-      return await createAdReport({
-        userId,
-        isAd,
-        detectedAdPhrase,
-        channelId,
-      });
-    } catch (error) {
-      console.error("fetch ad report failed:", error);
-    }
+    return handleAsyncError(
+      () => createAdReport({ userId, isAd, detectedAdPhrase, channelId }),
+      "Failed to create ad report:"
+    );
   };
 
   return reportAd;
