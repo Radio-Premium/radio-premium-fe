@@ -7,6 +7,11 @@ import useChannelPlayback from "@/Playback/hooks/useChannelPlayback";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
 import { useUserStore } from "@/User/stores/useUserStore";
 
+const mockSelectedChannel = {
+  name: "테스트 채널",
+  logoUrl: "https://example.com/test.jpg",
+};
+
 let mockIsChannelChanged = false;
 let mockIsPlaying = false;
 
@@ -56,10 +61,7 @@ describe("ChannelPlayer", () => {
     });
 
     useChannelPlayback.mockReturnValue({
-      selectedChannel: {
-        name: "테스트 채널",
-        logoUrl: "https://example.com/test.jpg",
-      },
+      selectedChannel: mockSelectedChannel,
       isPlaying: mockIsPlaying,
       handlePlayPause: mockHandlePlayPause,
     });
@@ -72,8 +74,10 @@ describe("ChannelPlayer", () => {
 
     render(<ChannelPlayer />);
 
-    expect(screen.getByText("테스트 채널")).toBeInTheDocument();
-    expect(screen.getByAltText("테스트 채널 썸네일")).toBeInTheDocument();
+    expect(screen.getByText(mockSelectedChannel.name)).toBeInTheDocument();
+    expect(
+      screen.getByAltText(`${mockSelectedChannel.name} 썸네일`)
+    ).toBeInTheDocument();
   });
 
   it("isChannelChanged가 false이면 '광고 감지'를 표시한다", () => {
@@ -105,12 +109,10 @@ describe("ChannelPlayer", () => {
 
   it("isPlaying이 true면 일시정지 아이콘이 표시된다", () => {
     mockIsChannelChanged = true;
+    mockIsPlaying = true;
 
     useChannelPlayback.mockReturnValue({
-      selectedChannel: {
-        name: "테스트 채널",
-        logoUrl: "https://example.com/test.jpg",
-      },
+      selectedChannel: mockSelectedChannel,
       isPlaying: true,
       handlePlayPause: mockHandlePlayPause,
     });
@@ -122,12 +124,10 @@ describe("ChannelPlayer", () => {
 
   it("isPlaying이 false면 재생 아이콘이 표시된다", () => {
     mockIsChannelChanged = true;
+    mockIsPlaying = false;
 
     useChannelPlayback.mockReturnValue({
-      selectedChannel: {
-        name: "테스트 채널",
-        logoUrl: "https://example.com/test.jpg",
-      },
+      selectedChannel: mockSelectedChannel,
       isPlaying: false,
       handlePlayPause: mockHandlePlayPause,
     });
