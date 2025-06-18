@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect } from "react";
 
 import { BACKEND_API_URL } from "@/shared/constants/env";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useUserProfile = (userId) => {
-  const { setUserSettings } = useUserStore();
+  const { setUserSettings } = useUserSettingsStore();
 
   useEffect(() => {
     if (!userId) {

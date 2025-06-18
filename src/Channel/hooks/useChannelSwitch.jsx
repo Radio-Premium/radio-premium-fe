@@ -4,7 +4,7 @@ import { getRandomNoAdChannel } from "@/Channel/services/radioChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
 import useControlStreamingSwitch from "@/Playback/hooks/useControlStreamingSwitch";
 import { useVideoElementStore } from "@/shared/stores/useVideoElementStore";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useChannelSwitch = () => {
   const videoElement = useVideoElementStore((state) => state.videoElement);
@@ -14,7 +14,7 @@ const useChannelSwitch = () => {
     (state) => state.setIsChannelChanged
   );
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
-  const adRedirectChannelId = useUserStore(
+  const adRedirectChannelId = useUserSettingsStore(
     (state) => state.settings.adRedirectChannelId
   );
   const controlStreamingSwitch = useControlStreamingSwitch();

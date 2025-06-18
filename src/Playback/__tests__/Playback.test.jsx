@@ -5,7 +5,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import ChannelPlayer from "@/Playback/components/ChannelPlayer";
 import useChannelPlayback from "@/Playback/hooks/useChannelPlayback";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const mockSelectedChannel = {
   name: "테스트 채널",
@@ -22,8 +22,8 @@ vi.mock("@/Channel/stores/useChannelStore", () => ({
     }),
 }));
 
-vi.mock("@/User/stores/useUserStore", () => ({
-  useUserStore: vi.fn(),
+vi.mock("@/User/stores/useUserSettingsStore", () => ({
+  useUserSettingsStore: vi.fn(),
 }));
 
 vi.mock("@/Playback/hooks/useChannelPlayback", () => ({
@@ -53,7 +53,7 @@ describe("ChannelPlayer", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    useUserStore.mockReturnValue({
+    useUserSettingsStore.mockReturnValue({
       settings: {
         RETURN_CHANNEL: true,
         AD_DETECT: true,
