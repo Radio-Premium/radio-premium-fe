@@ -19,7 +19,7 @@ import { useUserStore } from "@/User/stores/useUserStore";
 vi.mock("axios");
 
 describe("UserSetting", () => {
-  it("광고 감지 설정을 true로 변경한다", async () => {
+  it("광고 감지 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
     useUserStore.setState({ settings: { isAdDetect: false } });
     vi.spyOn(window.localStorage.__proto__, "getItem").mockReturnValue("1");
     axios.patch.mockResolvedValue({});
@@ -35,7 +35,7 @@ describe("UserSetting", () => {
     expect(useUserStore.getState().settings.isAdDetect).toBe(true);
   });
 
-  it("이전 채널 설정을 true로 변경한다", async () => {
+  it("이전 채널 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
     useUserStore.setState({ settings: { isReturnChannel: false } });
     vi.spyOn(window.localStorage.__proto__, "getItem").mockReturnValue("1");
     axios.patch.mockResolvedValue({});
