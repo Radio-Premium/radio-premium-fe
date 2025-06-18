@@ -8,9 +8,11 @@ import Home from "@/Channel/components/Home";
 import useCategorizeChannels from "@/Channel/hooks/useCategorizeChannels";
 
 vi.mock("axios");
+
 vi.mock("@/Channel/hooks/useChannels", () => ({
   default: vi.fn(),
 }));
+
 vi.mock("@/Channel/hooks/useCategorizeChannels", () => {
   const mockedCategorize = vi.fn();
   return {
@@ -18,15 +20,19 @@ vi.mock("@/Channel/hooks/useCategorizeChannels", () => {
     __esModule: true,
   };
 });
+
 vi.mock("@/User/hooks/useUserData", () => ({
   default: vi.fn(),
 }));
+
 vi.mock("@/User/hooks/useUserId", () => ({
   default: vi.fn(),
 }));
+
 vi.mock("@/Channel/hooks/useChannelNavigation", () => ({
   default: () => mockNavigate,
 }));
+
 vi.mock("@/Channel/hooks/useToggleFavorite", () => ({
   default: () => mockToggleFavorite,
 }));
