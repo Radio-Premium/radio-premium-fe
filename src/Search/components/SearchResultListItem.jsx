@@ -1,7 +1,7 @@
+import { memo } from "react";
+
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
 import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
-import useChannelNavigation from "@/Channel/hooks/useChannelNavigation";
-import useToggleFavorite from "@/Channel/hooks/useToggleFavorite";
 import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 
 const SearchResultListItem = ({
@@ -10,14 +10,13 @@ const SearchResultListItem = ({
   channelName,
   backgroundColor,
   isFavorite = false,
+  onClick,
+  onToggleFavorite,
 }) => {
-  const goToChannelPlayer = useChannelNavigation();
-  const toggleFavorite = useToggleFavorite();
-
   return (
     <li
       className={`my-2 flex h-16 w-full items-center rounded-md ${backgroundColor} px-6 py-2 select-none`}
-      onClick={() => goToChannelPlayer(channelId)}
+      onClick={() => onClick(channelId)}
     >
       <img
         className="h-12 w-12 rounded-[50%]"
@@ -28,7 +27,7 @@ const SearchResultListItem = ({
       <button
         onClick={(e) => {
           e.stopPropagation();
-          toggleFavorite(channelId);
+          onToggleFavorite(channelId);
         }}
       >
         {isFavorite ? (
@@ -41,4 +40,4 @@ const SearchResultListItem = ({
   );
 };
 
-export default SearchResultListItem;
+export default memo(SearchResultListItem);

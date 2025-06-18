@@ -8,14 +8,14 @@ import ToggleButton from "@/shared/components/ui/ToggleButton";
 import { CHANNEL_MESSAGES } from "@/shared/constants/messages";
 import { SETTING_TITLES, SETTING_TYPES } from "@/User/constants/settingOptions";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const ChannelPlayer = () => {
   const { selectedChannel, isPlaying, handlePlayPause } = useChannelPlayback(
     PLAYBACK_MODE.FULL
   );
   const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
-  const { settings } = useUserStore();
+  const { settings } = useUserSettingsStore();
 
   const { name, logoUrl } = selectedChannel;
 

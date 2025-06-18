@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 import DragDropIcon from "@/assets/svgs/icon-drag-drop.svg?react";
 import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
@@ -81,4 +81,4 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
   );
 };
 
-export default FavoriteChannelListItem;
+export default memo(FavoriteChannelListItem);

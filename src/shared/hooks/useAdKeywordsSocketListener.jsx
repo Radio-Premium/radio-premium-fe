@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import useChannelSwitch from "@/Channel/hooks/useChannelSwitch";
 import socket from "@/shared/utils/socketClient";
@@ -8,23 +8,26 @@ const useAdKeywordsSocketListener = () => {
   const handleChannelSwitch = useChannelSwitch();
   const userId = Number(useUserId());
 
+  const handleConnect = useCallback(() => {
+    console.log("connected");
+    socket.emit("registerUser", { userId: String(userId) });
+  }, [userId]);
+
+  const handleRadioText = useCallback(
+    ({ isAd }) => {
+      handleChannelSwitch(isAd);
+    },
+    [handleChannelSwitch]
+  );
+
+  const handleDisconnect = useCallback(() => {
+    console.log("disconnected");
+  }, []);
+
   useEffect(() => {
     if (Number.isNaN(userId)) {
       return;
     }
-
-    const handleConnect = () => {
-      console.log("connected");
-      socket.emit("registerUser", { userId: String(userId) });
-    };
-
-    const handleRadioText = ({ isAd }) => {
-      handleChannelSwitch(isAd);
-    };
-
-    const handleDisconnect = () => {
-      console.log("disconnected");
-    };
 
     if (socket.connected) {
       handleConnect();
@@ -39,7 +42,7 @@ const useAdKeywordsSocketListener = () => {
       socket.off("radioText", handleRadioText);
       socket.off("disconnect", handleDisconnect);
     };
-  }, [handleChannelSwitch, userId]);
+  }, [handleConnect, handleRadioText, handleDisconnect, userId]);
 };
 
 export default useAdKeywordsSocketListener;

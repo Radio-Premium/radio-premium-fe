@@ -9,12 +9,12 @@ import {
   SETTING_EXPLANATIONS,
 } from "@/User/constants/settingOptions";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const Settings = () => {
   const channelList = useChannelStore((state) => state.radioChannelList);
-  const isAdDetect = useUserStore((state) => state.settings.isAdDetect);
-  const adRedirectChannelId = useUserStore(
+  const isAdDetect = useUserSettingsStore((state) => state.settings.isAdDetect);
+  const adRedirectChannelId = useUserSettingsStore(
     (state) => state.settings.adRedirectChannelId
   );
   const updateAdRedirectChannelId = useUpdateSetting(

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
+import useChannelNavigation from "@/Channel/hooks/useChannelNavigation";
+import useToggleFavorite from "@/Channel/hooks/useToggleFavorite";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
 import SearchResultListItem from "@/Search/components/SearchResultListItem";
 import { SEARCH_MESSAGES } from "@/Search/constants/messages";
@@ -12,7 +14,24 @@ const Search = () => {
   );
   const keyword = useSearchStore((state) => state.keyword);
   const [filteredChannelList, setFilteredChannelList] = useState([]);
+  const goToChannelPlayer = useChannelNavigation();
+  const toggleFavorite = useToggleFavorite();
+
   const trimmedKeyword = keyword.trim();
+
+  const handleClick = useCallback(
+    (channelId) => {
+      goToChannelPlayer(channelId);
+    },
+    [goToChannelPlayer]
+  );
+
+  const handleToggleFavorite = useCallback(
+    (channelId) => {
+      toggleFavorite(channelId);
+    },
+    [toggleFavorite]
+  );
 
   useEffect(() => {
     const upperKeyword = trimmedKeyword.toUpperCase();
@@ -43,6 +62,8 @@ const Search = () => {
             thumbnail={logoUrl}
             backgroundColor="bg-white"
             isFavorite={interestChannelIds.includes(id)}
+            onClick={handleClick}
+            onToggleFavorite={handleToggleFavorite}
           />
         ))}
       </ul>

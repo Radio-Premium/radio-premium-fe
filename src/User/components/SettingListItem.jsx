@@ -1,10 +1,10 @@
 import ToggleButton from "@/shared/components/ui/ToggleButton";
 import { SETTING_TYPES } from "@/User/constants/settingOptions";
 import useUpdateSetting from "@/User/hooks/useUpdateSetting";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const SettingListItem = ({ type, title, explanations }) => {
-  const { settings } = useUserStore();
+  const { settings } = useUserSettingsStore();
   const updateSetting = useUpdateSetting(type);
 
   const handleToggle = () => {

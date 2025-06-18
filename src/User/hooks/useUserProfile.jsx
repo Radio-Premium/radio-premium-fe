@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 import { getUserInfo } from "@/User/services/users";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useUserProfile = (userId) => {
-  const { setUserSettings } = useUserStore();
+  const { setUserSettings } = useUserSettingsStore();
 
   useEffect(() => {
     if (!userId) {

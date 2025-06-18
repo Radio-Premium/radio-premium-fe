@@ -7,14 +7,14 @@ import { usePlayingStore } from "@/Playback/stores/usePlayingStore";
 import { controlStreamingPlayback } from "@/Playback/utils/playControl";
 import { useVideoElementStore } from "@/shared/stores/useVideoElementStore";
 import { SETTING_TYPES } from "@/User/constants/settingOptions";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useChannelPlayback = (mode) => {
   const videoElement = useVideoElementStore((state) => state.videoElement);
   const { selectedChannelId, radioChannelList } = useChannelStore();
   const { playingChannelId, openMiniPlayer } = useMiniPlayerStore();
   const { isPlaying, setIsPlaying } = usePlayingStore();
-  const { settings } = useUserStore();
+  const { settings } = useUserSettingsStore();
 
   const isProcessing = useRef(false);
 

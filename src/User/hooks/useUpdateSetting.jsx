@@ -1,9 +1,9 @@
 import { SETTING_TYPES } from "@/User/constants/settingOptions";
 import { updateUserSettings } from "@/User/services/userSettings";
-import { useUserStore } from "@/User/stores/useUserStore";
+import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useUpdateSetting = (type) => {
-  const { settings, setUserSettings } = useUserStore();
+  const { settings, setUserSettings } = useUserSettingsStore();
 
   const updateSetting = async (value) => {
     const userId = localStorage.getItem("userId");

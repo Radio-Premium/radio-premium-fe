@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
 import useChannelNavigation from "@/Channel/hooks/useChannelNavigation";
@@ -51,4 +51,4 @@ const ChannelListItem = ({
   );
 };
 
-export default ChannelListItem;
+export default memo(ChannelListItem);
