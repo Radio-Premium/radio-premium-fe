@@ -4,8 +4,8 @@ export const useMiniPlayerStore = create((set) => ({
   isVisible: false,
   playingChannelId: null,
 
-  setPlayingChannelId: (channelId) => set({ playingChannelId: channelId }),
-  openMiniPlayer: (channelId) =>
-    set({ isVisible: true, playingChannelId: channelId }),
+  setPlayingChannelId: (playingChannelId) => set({ playingChannelId }),
+  openMiniPlayer: (playingChannelId) =>
+    set({ isVisible: true, playingChannelId }),
   closeMiniPlayer: () => set({ isVisible: false, playingChannelId: null }),
 }));

@@ -12,12 +12,10 @@ export const useChannelStore = create(
 
       setInterestChannelIds: (interestChannelIds) =>
         set({ interestChannelIds }),
-      setIsChannelChanged: (isChanged) => set({ isChannelChanged: isChanged }),
-      setPrevChannelId: (channelId) => set({ prevChannelId: channelId }),
-      setRadioChannelList: (channelList) =>
-        set({ radioChannelList: channelList }),
-      setSelectedChannelId: (channelId) =>
-        set({ selectedChannelId: channelId }),
+      setIsChannelChanged: (isChannelChanged) => set({ isChannelChanged }),
+      setPrevChannelId: (prevChannelId) => set({ prevChannelId }),
+      setRadioChannelList: (radioChannelList) => set({ radioChannelList }),
+      setSelectedChannelId: (selectedChannelId) => set({ selectedChannelId }),
     }),
     {
       name: "channel-storage",
