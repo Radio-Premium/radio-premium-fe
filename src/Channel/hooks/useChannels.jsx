@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect } from "react";
 
+import { getRadioChannels } from "@/Channel/services/radioChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
-import { BACKEND_API_URL } from "@/shared/constants/env";
 
 const useChannels = () => {
   const { radioChannelList, setRadioChannelList } = useChannelStore();
@@ -14,7 +13,7 @@ const useChannels = () => {
 
     const initChannels = async () => {
       try {
-        const { data } = await axios.get(`${BACKEND_API_URL}/radio-channels`);
+        const data = await getRadioChannels();
         setRadioChannelList(data);
       } catch (error) {
         console.error("fetch radioChannels failed: ", error);

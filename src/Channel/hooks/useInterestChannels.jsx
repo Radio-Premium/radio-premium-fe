@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect } from "react";
 
+import { getInterestChannels } from "@/Channel/services/interestChannels";
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
-import { BACKEND_API_URL } from "@/shared/constants/env";
 
 const useInterestChannels = (userId) => {
   const setInterestChannelIds = useChannelStore(
@@ -16,9 +15,7 @@ const useInterestChannels = (userId) => {
 
     const getInterestIds = async () => {
       try {
-        const { data } = await axios.get(
-          `${BACKEND_API_URL}/users/${userId}/interest-channels`
-        );
+        const data = await getInterestChannels(userId);
         const ids = data.map((item) => item.channelId);
         setInterestChannelIds(ids);
       } catch (error) {

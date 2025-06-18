@@ -1,18 +1,14 @@
-import axios from "axios";
-
-import { BACKEND_API_URL } from "@/shared/constants/env";
+import { createAdReport } from "@/AdReport/services/reports";
 
 const useSubmitAdReport = () => {
   const reportAd = async ({ userId, isAd, detectedAdPhrase, channelId }) => {
     try {
-      const { data } = await axios.post(`${BACKEND_API_URL}/reports`, {
+      return await createAdReport({
         userId,
         isAd,
         detectedAdPhrase,
         channelId,
       });
-
-      return data;
     } catch (error) {
       console.error("fetch ad report failed:", error);
     }

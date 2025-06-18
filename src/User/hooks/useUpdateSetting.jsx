@@ -1,7 +1,5 @@
-import axios from "axios";
-
-import { BACKEND_API_URL } from "@/shared/constants/env";
 import { SETTING_TYPES } from "@/User/constants/settingOptions";
+import { updateUserSettings } from "@/User/services/userSettings";
 import { useUserStore } from "@/User/stores/useUserStore";
 
 const useUpdateSetting = (type) => {
@@ -25,10 +23,7 @@ const useUpdateSetting = (type) => {
     }
 
     try {
-      await axios.patch(
-        `${BACKEND_API_URL}/users/${userId}/settings`,
-        updatedSettings
-      );
+      await updateUserSettings(userId, updatedSettings);
       setUserSettings(updatedSettings);
     } catch (error) {
       console.error("setting change failed", error);

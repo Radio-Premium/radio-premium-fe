@@ -1,9 +1,8 @@
-import axios from "axios";
 import Hls from "hls.js";
 
 import { getChannelInfo } from "@/Channel/services/radioChannels";
+import { postWhisper } from "@/Playback/services/whisper";
 import { stopWhisperServer } from "@/Playback/utils/stopWhisperServer";
-import { BACKEND_API_URL } from "@/shared/constants/env";
 
 const userId = localStorage.getItem("userId");
 let hlsInstance = null;
@@ -38,11 +37,7 @@ export const controlStreamingPlayback = async (
       const { data } = await getChannelInfo(channelId, userId);
       const streamingUrl = data.url;
       if (isAdDetect) {
-        await axios.post(`${BACKEND_API_URL}/whisper`, {
-          streamingUrl,
-          userId,
-          channelId,
-        });
+        await postWhisper({ streamingUrl, userId, channelId });
       }
       startStreamingPlay(video, streamingUrl);
     } catch (error) {
