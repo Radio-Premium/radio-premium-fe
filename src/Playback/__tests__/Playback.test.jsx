@@ -31,6 +31,7 @@ vi.mock("@/User/hooks/useUpdateSetting", () => ({
 
 vi.mock("@/User/constants/settingOptions", async (importOriginal) => {
   const actual = await importOriginal();
+
   return {
     ...actual,
     SETTING_TITLES: {
@@ -68,33 +69,43 @@ describe("ChannelPlayer", () => {
 
   it("초기 렌더링 시 채널 이름과 썸네일을 표시한다", () => {
     mockIsChannelChanged = true;
+
     render(<ChannelPlayer />);
+
     expect(screen.getByText("테스트 채널")).toBeInTheDocument();
     expect(screen.getByAltText("테스트 채널 썸네일")).toBeInTheDocument();
   });
 
   it("isChannelChanged가 false이면 '광고 감지'를 표시한다", () => {
     mockIsChannelChanged = false;
+
     render(<ChannelPlayer />);
+
     expect(screen.getByText("광고 감지")).toBeInTheDocument();
   });
 
   it("isChannelChanged가 true이면 '기존 채널로 이동'을 표시한다", () => {
     mockIsChannelChanged = true;
+
     render(<ChannelPlayer />);
+
     expect(screen.getByText("기존 채널로 이동")).toBeInTheDocument();
   });
 
   it("토글 버튼 클릭 시 updateSetting을 호출한다", () => {
     mockIsChannelChanged = true;
+
     render(<ChannelPlayer />);
+
     const toggleButton = screen.getByTestId("toggle-button");
     fireEvent.click(toggleButton);
+
     expect(mockUpdateSetting).toHaveBeenCalled();
   });
 
   it("isPlaying이 true면 일시정지 아이콘이 표시된다", () => {
     mockIsChannelChanged = true;
+
     useChannelPlayback.mockReturnValue({
       selectedChannel: {
         name: "테스트 채널",
@@ -105,11 +116,13 @@ describe("ChannelPlayer", () => {
     });
 
     render(<ChannelPlayer />);
+
     expect(screen.getByTestId("pause-icon")).toBeInTheDocument();
   });
 
   it("isPlaying이 false면 재생 아이콘이 표시된다", () => {
     mockIsChannelChanged = true;
+
     useChannelPlayback.mockReturnValue({
       selectedChannel: {
         name: "테스트 채널",
@@ -120,14 +133,18 @@ describe("ChannelPlayer", () => {
     });
 
     render(<ChannelPlayer />);
+
     expect(screen.getByTestId("play-icon")).toBeInTheDocument();
   });
 
   it("재생 버튼 클릭 시 handlePlayPause를 호출한다", () => {
     mockIsChannelChanged = true;
+
     render(<ChannelPlayer />);
+
     const playButton = screen.getByTestId("play-pause-button");
     fireEvent.click(playButton);
+
     expect(mockHandlePlayPause).toHaveBeenCalled();
   });
 });
