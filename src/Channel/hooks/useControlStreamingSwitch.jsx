@@ -1,7 +1,7 @@
-import { getChannelInfo } from "@/apis/radioChannels";
-import { useChannelStore } from "@/stores/useChannelStore";
-import { useMiniPlayerStore } from "@/stores/useMiniPlayerStore";
-import { startStreamingPlay } from "@/utils/playControl";
+import { getChannelInfo } from "@/Channel/services/radioChannels";
+import { useChannelStore } from "@/Channel/stores/useChannelStore";
+import { useMiniPlayerStore } from "@/Playback/stores/useMiniPlayerStore";
+import { startStreamingPlay } from "@/Playback/utils/playControl";
 
 const useControlStreamingSwitch = () => {
   const { setSelectedChannelId } = useChannelStore();
