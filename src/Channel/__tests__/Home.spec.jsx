@@ -46,7 +46,6 @@ describe("Home 컴포넌트 통합 테스트", async () => {
       { id: 1, name: "KBS Radio", logoUrl: "kbs.jpg" },
       { id: 2, name: "MBC Radio", logoUrl: "mbc.jpg" },
     ];
-
     vi.mocked(useCategorizeChannels).mockReturnValue([[], mockChannelData]);
 
     render(
@@ -67,12 +66,10 @@ describe("Home 컴포넌트 통합 테스트", async () => {
       { id: 2, name: "Channel 2", logoUrl: "ch2.jpg" },
     ];
     const mockChannelData = [{ id: 1, name: "KBS Radio", logoUrl: "kbs.jpg" }];
-
     vi.mocked(useCategorizeChannels).mockReturnValue([
       mockFavoriteChannels,
       mockChannelData,
     ]);
-
     mockToggleFavorite.mockResolvedValue(true);
 
     render(
@@ -95,7 +92,6 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     const mockFavoriteChannels = [
       { id: 1, name: "Favorite Channel", logoUrl: "fav.jpg" },
     ];
-
     vi.mocked(useCategorizeChannels).mockReturnValue([
       mockFavoriteChannels,
       [],
@@ -121,9 +117,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     const mockChannelData = [
       { id: 1, name: "Test Radio", logoUrl: "test.jpg" },
     ];
-
     vi.mocked(axios.get).mockResolvedValue({ data: mockChannelData });
-
     vi.mocked(useCategorizeChannels).mockReturnValue([[], mockChannelData]);
 
     render(
