@@ -8,7 +8,7 @@ import {
 import "@testing-library/jest-dom";
 import axios from "axios";
 import { MemoryRouter } from "react-router-dom";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { useChannelStore } from "@/Channel/stores/useChannelStore";
 import Settings from "@/User/components/Settings";
@@ -19,10 +19,13 @@ import { useUserStore } from "@/User/stores/useUserStore";
 vi.mock("axios");
 
 describe("UserSetting", () => {
-  it("광고 감지 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
-    useUserStore.setState({ settings: { isAdDetect: false } });
+  beforeEach(() => {
     vi.spyOn(window.localStorage.__proto__, "getItem").mockReturnValue("1");
     axios.patch.mockResolvedValue({});
+  });
+
+  it("광고 감지 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
+    useUserStore.setState({ settings: { isAdDetect: false } });
 
     const { result } = renderHook(() =>
       useUpdateSetting(SETTING_TYPES.AD_DETECT)
@@ -37,8 +40,6 @@ describe("UserSetting", () => {
 
   it("이전 채널 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
     useUserStore.setState({ settings: { isReturnChannel: false } });
-    vi.spyOn(window.localStorage.__proto__, "getItem").mockReturnValue("1");
-    axios.patch.mockResolvedValue({});
 
     const { result } = renderHook(() =>
       useUpdateSetting(SETTING_TYPES.RETURN_CHANNEL)
