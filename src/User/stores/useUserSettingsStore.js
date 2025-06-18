@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const useUserStore = create(
+export const useUserSettingsStore = create(
   persist(
     (set) => ({
       settings: {
@@ -19,7 +19,7 @@ export const useUserStore = create(
         })),
     }),
     {
-      name: "user-settings",
+      name: "user-settings-storage",
     }
   )
 );
