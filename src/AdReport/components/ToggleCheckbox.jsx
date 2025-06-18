@@ -1,3 +1,5 @@
+import { memo, useCallback } from "react";
+
 import Checkbox from "@/shared/components/ui/Checkbox";
 
 const ToggleCheckbox = ({
@@ -8,14 +10,17 @@ const ToggleCheckbox = ({
   selectedSubOptionId,
   onSelectSubOption,
 }) => {
-  const handleParentClick = () => {
+  const handleParentClick = useCallback(() => {
     onSelect();
     onSelectSubOption(null);
-  };
+  }, [onSelect, onSelectSubOption]);
 
-  const toggleChildOption = (id) => {
-    onSelectSubOption(selectedSubOptionId === id ? null : id);
-  };
+  const toggleChildOption = useCallback(
+    (id) => {
+      onSelectSubOption(selectedSubOptionId === id ? null : id);
+    },
+    [onSelectSubOption, selectedSubOptionId]
+  );
 
   return (
     <>
@@ -46,4 +51,4 @@ const ToggleCheckbox = ({
   );
 };
 
-export default ToggleCheckbox;
+export default memo(ToggleCheckbox);

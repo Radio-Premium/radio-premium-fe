@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 
 import ToggleCheckbox from "@/AdReport/components/ToggleCheckbox";
 import {
@@ -31,11 +31,11 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
     }
   );
 
-  const toggleParentOption = (option) => {
+  const toggleParentOption = useCallback((option) => {
     setSelectedParentOption((prev) => (prev === option ? null : option));
-  };
+  }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     const isAd = selectedParentOption === AD_REPORT_TYPES.AD;
 
     await submitAdReport({
@@ -60,7 +60,15 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
     ) {
       handleChannelSwitch(isAd);
     }
-  };
+  }, [
+    selectedParentOption,
+    selectedChildOption,
+    submitAdReport,
+    userId,
+    channelId,
+    onClose,
+    handleChannelSwitch,
+  ]);
 
   return (
     <Modal
