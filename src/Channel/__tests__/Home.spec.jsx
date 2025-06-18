@@ -107,7 +107,7 @@ describe("Home 컴포넌트 통합 테스트", async () => {
     });
   });
 
-  test("컴포넌트가 마운트되면 라디오 채널 데이터를 불러온다", async () => {
+  test("컴포넌트가 마운트되면 라디오 채널 데이터를 불러와 화면에 표시한다", async () => {
     const mockChannelData = [
       { id: 1, name: "Test Radio", logoUrl: "test.jpg" },
     ];
