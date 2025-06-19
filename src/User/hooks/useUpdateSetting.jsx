@@ -3,7 +3,7 @@ import { updateUserSettings } from "@/User/services/userSettings";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const useUpdateSetting = (type) => {
-  const { settings, setSettings } = useUserSettingsStore();
+  const { userSettings, setUserSettings } = useUserSettingsStore();
 
   const updateSetting = async (value) => {
     const userId = localStorage.getItem("userId");
@@ -12,7 +12,7 @@ const useUpdateSetting = (type) => {
     }
 
     const isToggleType = type !== SETTING_TYPES.AD_REDIRECT_CHANNEL;
-    const toggledValue = isToggleType ? !settings[type] : value;
+    const toggledValue = isToggleType ? !userSettings[type] : value;
 
     const updatedSettings = {
       [type]: toggledValue,
@@ -24,7 +24,7 @@ const useUpdateSetting = (type) => {
 
     try {
       await updateUserSettings(userId, updatedSettings);
-      setSettings(updatedSettings);
+      setUserSettings(updatedSettings);
     } catch (error) {
       console.error("setting change failed", error);
     }

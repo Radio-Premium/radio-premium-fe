@@ -14,11 +14,11 @@ const useChannelPlayback = (mode) => {
   const { selectedChannelId, radioChannelList } = useChannelStore();
   const { playingChannelId, openMiniPlayer } = useMiniPlayerStore();
   const { isPlaying, setIsPlaying } = usePlayingStore();
-  const { settings } = useUserSettingsStore();
+  const { userSettings } = useUserSettingsStore();
 
   const isProcessing = useRef(false);
 
-  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
+  const isAdDetect = userSettings[SETTING_TYPES.AD_DETECT];
 
   const isMiniMode = mode === PLAYBACK_MODE.MINI;
   const targetChannelId = isMiniMode ? playingChannelId : selectedChannelId;

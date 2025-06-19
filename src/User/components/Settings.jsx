@@ -13,9 +13,11 @@ import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const Settings = () => {
   const channelList = useChannelStore((state) => state.radioChannelList);
-  const isAdDetect = useUserSettingsStore((state) => state.settings.isAdDetect);
+  const isAdDetect = useUserSettingsStore(
+    (state) => state.userSettings.isAdDetect
+  );
   const adRedirectChannelId = useUserSettingsStore(
-    (state) => state.settings.adRedirectChannelId
+    (state) => state.userSettings.adRedirectChannelId
   );
   const updateAdRedirectChannelId = useUpdateSetting(
     SETTING_TYPES.AD_REDIRECT_CHANNEL

@@ -15,7 +15,7 @@ const useChannelSwitch = () => {
   );
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
   const adRedirectChannelId = useUserSettingsStore(
-    (state) => state.settings.adRedirectChannelId
+    (state) => state.userSettings.adRedirectChannelId
   );
   const controlStreamingSwitch = useControlStreamingSwitch();
 

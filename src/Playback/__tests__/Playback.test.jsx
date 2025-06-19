@@ -54,7 +54,7 @@ describe("ChannelPlayer", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     useUserSettingsStore.mockReturnValue({
-      settings: {
+      userSettings: {
         RETURN_CHANNEL: true,
         AD_DETECT: true,
       },

@@ -25,7 +25,7 @@ describe("UserSetting", () => {
   });
 
   it("광고 감지 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
-    useUserSettingsStore.setState({ settings: { isAdDetect: false } });
+    useUserSettingsStore.setState({ userSettings: { isAdDetect: false } });
 
     const { result } = renderHook(() =>
       useUpdateSetting(SETTING_TYPES.AD_DETECT)
@@ -35,11 +35,11 @@ describe("UserSetting", () => {
       await result.current();
     });
 
-    expect(useUserSettingsStore.getState().settings.isAdDetect).toBe(true);
+    expect(useUserSettingsStore.getState().userSettings.isAdDetect).toBe(true);
   });
 
   it("이전 채널 설정이 false일 경우, useUpdateSetting을 호출하면 설정을 true로 변경한다", async () => {
-    useUserSettingsStore.setState({ settings: { isReturnChannel: false } });
+    useUserSettingsStore.setState({ userSettings: { isReturnChannel: false } });
 
     const { result } = renderHook(() =>
       useUpdateSetting(SETTING_TYPES.RETURN_CHANNEL)
@@ -49,11 +49,13 @@ describe("UserSetting", () => {
       await result.current();
     });
 
-    expect(useUserSettingsStore.getState().settings.isReturnChannel).toBe(true);
+    expect(useUserSettingsStore.getState().userSettings.isReturnChannel).toBe(
+      true
+    );
   });
 
   it("광고 감지가 true일 때 광고 없는 채널 선택 UI를 표시한다", () => {
-    useUserSettingsStore.setState({ settings: { isAdDetect: true } });
+    useUserSettingsStore.setState({ userSettings: { isAdDetect: true } });
 
     render(
       <MemoryRouter>
@@ -65,7 +67,7 @@ describe("UserSetting", () => {
   });
 
   it("광고 감지가 false일 때 광고 없는 채널 선택 UI를 표시하지 않는다", () => {
-    useUserSettingsStore.setState({ settings: { isAdDetect: false } });
+    useUserSettingsStore.setState({ userSettings: { isAdDetect: false } });
 
     render(
       <MemoryRouter>
@@ -78,7 +80,7 @@ describe("UserSetting", () => {
 
   it("광고 없는 채널 중 하나만 선택된 상태로 표시한다", () => {
     useUserSettingsStore.setState({
-      settings: {
+      userSettings: {
         isAdDetect: true,
         adRedirectChannelId: 2,
       },

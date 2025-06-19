@@ -4,7 +4,7 @@ import useUpdateSetting from "@/User/hooks/useUpdateSetting";
 import { useUserSettingsStore } from "@/User/stores/useUserSettingsStore";
 
 const SettingListItem = ({ type, title, explanations }) => {
-  const { settings } = useUserSettingsStore();
+  const { userSettings } = useUserSettingsStore();
   const updateSetting = useUpdateSetting(type);
 
   const handleToggle = () => {
@@ -29,10 +29,10 @@ const SettingListItem = ({ type, title, explanations }) => {
       </div>
       <div className="my-auto ml-auto">
         <ToggleButton
-          checked={settings[type]}
+          checked={userSettings[type]}
           onToggle={handleToggle}
           disabled={
-            type === SETTING_TYPES.RETURN_CHANNEL && !settings.isAdDetect
+            type === SETTING_TYPES.RETURN_CHANNEL && !userSettings.isAdDetect
           }
         />
       </div>

@@ -15,7 +15,7 @@ const ChannelPlayer = () => {
     PLAYBACK_MODE.FULL
   );
   const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
-  const { settings } = useUserSettingsStore();
+  const { userSettings } = useUserSettingsStore();
 
   const { name, logoUrl } = selectedChannel;
 
@@ -46,7 +46,7 @@ const ChannelPlayer = () => {
           <ToggleButton
             data-testid="toggle-button"
             size="s"
-            checked={settings[settingType]}
+            checked={userSettings[settingType]}
             onToggle={handleToggle}
           />
         </div>
