@@ -242,38 +242,17 @@ Express 서버는 Whisper가 전달한 텍스트 내에 해당 키워드들이 �
 # 🛠️ 기술 스택
 
 ### Frontend
-<div>
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=React&logoColor=white">
-<img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white">
-<img src="https://img.shields.io/badge/Zustand-553830?style=for-the-badge&logo=Zustand&logoColor=white">
-<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
-<img src="https://img.shields.io/badge/Socket.IO Client-010101?style=for-the-badge&logo=Socket.IO&logoColor=white">
-<div/>
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-553830?style=for-the-badge&logo=Zustand&logoColor=white"> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src="https://img.shields.io/badge/Socket.IO Client-010101?style=for-the-badge&logo=Socket.IO&logoColor=white">
   
 ### Backend
-<div>
-<img src="https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white">
-<img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=white">
-<img src="https://img.shields.io/badge/Socket.IO Server-010101?style=for-the-badge&logo=Socket.IO&logoColor=white">
-<img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white">
-<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
-<div/>
+<img src="https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=white"> <img src="https://img.shields.io/badge/Socket.IO Server-010101?style=for-the-badge&logo=Socket.IO&logoColor=white"> <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white"> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
+
   
 ### ML
-<div>
-<img src="https://img.shields.io/badge/Whisper-412991?style=for-the-badge&logo=openai&logoColor=white">
-<img src="https://img.shields.io/badge/XGBoost-008FC7?style=for-the-badge">
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/Python Socket.IO-003DAD?style=for-the-badge">
-<div/>
+<img src="https://img.shields.io/badge/Whisper-412991?style=for-the-badge&logo=openai&logoColor=white"> <img src="https://img.shields.io/badge/XGBoost-008FC7?style=for-the-badge"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/Python Socket.IO-003DAD?style=for-the-badge">
   
 ### Deployment
-<div>
-<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge">
-<img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge">
-<img src="https://img.shields.io/badge/CloudFront-F7941D?style=for-the-badge">
-<img src="https://img.shields.io/badge/Elastic Beanstalk-E9711C?style=for-the-badge">
-<div/>
+<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge"> <img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge"> <img src="https://img.shields.io/badge/CloudFront-F7941D?style=for-the-badge"> <img src="https://img.shields.io/badge/Elastic Beanstalk-E9711C?style=for-the-badge">
 
 <br>
   
@@ -325,7 +304,7 @@ PostgreSQL은 Supabase와의 통합 환경이 잘 구축되어 있어 실시간 
 
 Whisper는 `ffmpeg`를 통해 수신한 음성 데이터에서 텍스트를 추출합니다.
 
----
+<br>
 
 ### 1-2. 광고 판단
 
