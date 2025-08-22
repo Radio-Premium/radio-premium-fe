@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* Modules */
+    "baseUrl": "./src",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["*"]
+    },
+
+    /* Type Checking */
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": false,
+
+    /* Language and Environment */
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "esnext",
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    /* Emit */
+    "noEmit": true,
+
+    /* Completeness */
+    "allowJs": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
